@@ -22,7 +22,7 @@ export default function ActivitySearchPage() {
   return (
     <div className="min-h-screen bg-[#F7F9FC]">
       <div className="bg-[#2E4057] text-white px-6 py-3">
-        <span className="text-xl font-semibold text-[#FF6B35]">TravelLoop</span>
+        <span className="text-xl font-semibold text-[#FF6B35]">Traveloop</span>
       </div>
       <div className="max-w-3xl mx-auto">
         <h1 className="text-2xl font-semibold text-black mb-6">Activity Search</h1>
