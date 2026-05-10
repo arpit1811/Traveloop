@@ -42,7 +42,7 @@ export default function RegistrationPage() {
         updatedAt: new Date().toISOString(),
       }, { merge: true });
       
-      router.push("/dashboard");
+      router.push("/");
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : "Failed to save profile";
       setError(errorMessage);
