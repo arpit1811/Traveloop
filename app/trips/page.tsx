@@ -90,10 +90,6 @@ export default function TripsPage() {
 
   return (
     <div className="min-h-screen bg-[#F7F9FC]">
-      <div className="bg-[#2E4057] text-white px-6 py-3">
-        <span className="text-xl font-semibold text-[#FF6B35]">Traveloop</span>
-      </div>
-
       <div className="max-w-4xl mx-auto p-6">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2xl font-bold text-black">My Trips</h1>

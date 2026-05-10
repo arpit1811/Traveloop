@@ -223,19 +223,6 @@ export default function PackingChecklistPage({ params }: { params: Promise<{ cit
 
   return (
     <div className="min-h-screen bg-[#F7F9FC]">
-      <header className="w-full bg-[#2E4057] text-white px-6 py-3 flex items-center justify-between">
-        <span className="text-xl font-semibold text-[#FF6B35]">TravelLoop</span>
-        <div className="w-8 h-8 rounded-full bg-gray-400 overflow-hidden">
-          {user?.photoURL ? (
-            <img src={user.photoURL} alt="Profile" className="w-full h-full object-cover" />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center text-white text-sm font-medium">
-              {user?.email?.charAt(0).toUpperCase() || "?"}
-            </div>
-          )}
-        </div>
-      </header>
-
       <div className="max-w-3xl mx-auto p-6">
         <h1 className="text-2xl font-bold text-black mb-4">Packing Checklist</h1>
 

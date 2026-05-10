@@ -35,7 +35,7 @@ export default function LoginPage() {
 
     try {
       await login(email, password);
-      router.push("/dashboard");
+      router.push("/");
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : "Failed to login";
       setError(getFriendlyError(errorMessage));
