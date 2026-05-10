@@ -121,7 +121,7 @@ export default function ItineraryPage({ params }: { params: Promise<{ city: stri
   return (
     <div className="min-h-screen bg-[#F7F9FC]">
       <div className="bg-[#2E4057] text-white px-6 py-3">
-        <span className="text-xl font-semibold text-[#FF6B35]">TravelLoop</span>
+        <span className="text-xl font-semibold text-[#FF6B35]">Traveloop</span>
       </div>
 
       <div className="max-w-5xl mx-auto p-6">
