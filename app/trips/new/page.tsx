@@ -132,21 +132,6 @@ export default function CreateTripPage() {
 
   return (
     <div className="min-h-screen bg-[#F7F9FC] pb-20">
-      <div className="bg-[#2E4057] text-white px-6 py-3 flex items-center justify-between">
-        <Link href="/" className="text-xl font-bold text-[#FF6B35]">Traveloop</Link>
-        <div className="flex items-center gap-4">
-          {user?.photoURL ? (
-            <Link href="/profile">
-              <img src={user.photoURL} alt="Profile" className="w-8 h-8 rounded-full border-2 border-[#FF6B35]" />
-            </Link>
-          ) : (
-            <Link href="/profile" className="w-8 h-8 rounded-full bg-[#FF6B35] flex items-center justify-center text-white font-medium text-sm">
-              {user?.email?.[0].toUpperCase() || "?"}
-            </Link>
-          )}
-        </div>
-      </div>
-
       <div className="max-w-6xl mx-auto px-4 pt-8">
         <div className="mb-6">
           <Link href="/trips" className="text-sm text-[#FF6B35] hover:underline">← Back to My Trips</Link>

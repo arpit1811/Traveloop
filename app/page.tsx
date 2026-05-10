@@ -93,26 +93,8 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-[#F7F9FC] pb-20">
-      <div className="bg-[#2E4057] text-white px-6 py-3 flex items-center justify-between">
-        <Link href="/" className="text-xl font-bold text-[#FF6B35]">Traveloop</Link>
-        <div className="flex items-center gap-4">
-          {user?.photoURL ? (
-                <Link href="/profile">
-                  <img src={user.photoURL} alt="Profile" className="w-8 h-8 rounded-full border-2 border-[#FF6B35]" />
-                </Link>
-              ) : (
-                <Link href="/profile" className="w-8 h-8 rounded-full bg-[#FF6B35] flex items-center justify-center text-white font-medium text-sm">
-                  {user?.email?.[0].toUpperCase() || "?"}
-                </Link>
-              )}
-          <div className="w-8 h-8 rounded-full bg-[#FF6B35] flex items-center justify-center text-sm font-medium">
-            {user?.email?.[0]?.toUpperCase() || "U"}
-          </div>
-        </div>
-      </div>
-
       <div className="max-w-6xl mx-auto px-4 pt-8">
-        <div className="bg-gradient-to-r from-[#FF6B35] to-[#e55a2b] rounded-3xl p-8 mb-8 text-white">
+        <div className="bg-gradient-to-r from-[#2E4057] to-[#3d5a80] rounded-3xl p-8 mb-8 text-white shadow-lg">
           <h1 className="text-3xl font-bold mb-2">Plan Your Next Adventure</h1>
           <p className="text-white/90 mb-6">Discover destinations, build itineraries, and make memories.</p>
 
@@ -122,12 +104,12 @@ export default function Dashboard() {
               placeholder="Search trips..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="flex-1 px-4 py-3 rounded-xl text-gray-800 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-white"
+              className="flex-1 px-4 py-3 rounded-xl text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-4 focus:ring-white/50 bg-white shadow-inner"
             />
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="px-4 py-3 rounded-xl text-gray-800 focus:outline-none focus:ring-2 focus:ring-white min-w-[120px]"
+              className="px-4 py-3 rounded-xl text-gray-900 focus:outline-none focus:ring-4 focus:ring-white/50 bg-white shadow-inner min-w-[120px]"
             >
               <option value="recent">Recent</option>
               <option value="date">By Date</option>
@@ -136,7 +118,7 @@ export default function Dashboard() {
             <select
               value={groupBy}
               onChange={(e) => setGroupBy(e.target.value)}
-              className="px-4 py-3 rounded-xl text-gray-800 focus:outline-none focus:ring-2 focus:ring-white min-w-[120px]"
+              className="px-4 py-3 rounded-xl text-gray-900 focus:outline-none focus:ring-4 focus:ring-white/50 bg-white shadow-inner min-w-[120px]"
             >
               <option value="">Group by</option>
               <option value="region">Region</option>
@@ -145,7 +127,7 @@ export default function Dashboard() {
             <select
               value={filter}
               onChange={(e) => setFilter(e.target.value)}
-              className="px-4 py-3 rounded-xl text-gray-800 focus:outline-none focus:ring-2 focus:ring-white min-w-[120px]"
+              className="px-4 py-3 rounded-xl text-gray-900 focus:outline-none focus:ring-4 focus:ring-white/50 bg-white shadow-inner min-w-[120px]"
             >
               <option value="">Filter</option>
               <option value="upcoming">Upcoming</option>
@@ -231,12 +213,6 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <Link
-        href="/trips/new"
-        className="fixed bottom-6 right-6 w-14 h-14 bg-[#FF6B35] text-white rounded-full shadow-lg flex items-center justify-center text-3xl hover:bg-[#e55a2b] transition-colors z-50"
-      >
-        +
-      </Link>
-    </div>
+      </div>
   );
 }
