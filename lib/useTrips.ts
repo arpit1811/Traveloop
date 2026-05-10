@@ -7,6 +7,7 @@ export interface Trip {
   id: string;
   userId: string;
   name: string;
+  destination?: string;
   startDate: string;
   endDate: string;
   description: string;
@@ -42,10 +43,22 @@ export function useTrips(user: User | null) {
   }, [user]);
 
   const createTrip = async (trip: Omit<Trip, "id" | "createdAt">) => {
-    const docRef = await addDoc(collection(db, "trips"), {
+    console.log("useTrips - createTrip called with:", trip);
+    console.log("useTrips - userId being sent:", trip.userId);
+    
+    if (!trip.userId) {
+      throw new Error("No userId provided - user may not be authenticated");
+    }
+    
+    const tripData = {
       ...trip,
       createdAt: new Date().toISOString(),
-    });
+    };
+    
+    console.log("useTrips - sending to Firestore:", tripData);
+    
+    const docRef = await addDoc(collection(db, "trips"), tripData);
+    console.log("useTrips - Firestore doc created with ID:", docRef.id);
     return docRef.id;
   };
 
