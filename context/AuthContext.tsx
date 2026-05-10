@@ -17,14 +17,20 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
       setLoading(false);
     });
     return unsubscribe;
   }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   const login = async (email: string, password: string) => {
     await signInWithEmailAndPassword(auth, email, password);
