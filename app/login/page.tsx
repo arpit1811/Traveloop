@@ -12,6 +12,22 @@ export default function LoginPage() {
   const router = useRouter();
   const { login } = useAuth();
 
+  const getFriendlyError = (message: string): string => {
+    if (message.includes("invalid-credential") || message.includes("wrong-password")) {
+      return "Invalid email or password. Please try again.";
+    }
+    if (message.includes("user-not-found")) {
+      return "No account found with this email. Please sign up.";
+    }
+    if (message.includes("too-many-requests")) {
+      return "Too many failed attempts. Please try again later.";
+    }
+    if (message.includes("network-request-failed")) {
+      return "Network error. Please check your connection.";
+    }
+    return "Login failed. Please try again.";
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
@@ -22,7 +38,7 @@ export default function LoginPage() {
       router.push("/dashboard");
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : "Failed to login";
-      setError(errorMessage);
+      setError(getFriendlyError(errorMessage));
     } finally {
       setLoading(false);
     }

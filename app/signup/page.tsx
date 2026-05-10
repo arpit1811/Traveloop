@@ -13,6 +13,22 @@ export default function SignupPage() {
   const router = useRouter();
   const { signup } = useAuth();
 
+  const getFriendlyError = (message: string): string => {
+    if (message.includes("email-already-in-use")) {
+      return "An account with this email already exists. Please login.";
+    }
+    if (message.includes("invalid-email")) {
+      return "Please enter a valid email address.";
+    }
+    if (message.includes("weak-password")) {
+      return "Password is too weak. Use at least 6 characters.";
+    }
+    if (message.includes("network-request-failed")) {
+      return "Network error. Please check your connection.";
+    }
+    return "Sign up failed. Please try again.";
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
@@ -34,7 +50,7 @@ export default function SignupPage() {
       router.push("/registration");
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : "Failed to sign up";
-      setError(errorMessage);
+      setError(getFriendlyError(errorMessage));
     } finally {
       setLoading(false);
     }
