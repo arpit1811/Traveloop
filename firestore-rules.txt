@@ -1,0 +1,30 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // User profiles - users can read all, write own
+    match /users/{userId} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Posts - anyone can read, only authenticated users can create
+    match /posts/{postId} {
+      allow read: if true;
+      allow create: if request.auth != null;
+      allow update, delete: if request.auth != null && request.auth.uid == resource.data.userId;
+    }
+    
+    // Trips - only owner can read/write
+    match /trips/{tripId} {
+      allow read, write: if request.auth != null && request.auth.uid == resource.data.userId;
+    }
+    
+    // Subcollections (stops, activities, packing, notes) - only owner
+    match /trips/{tripId}/{subcollection}/{docId} {
+      allow read, write: if request.auth != null && 
+        get(/databases/$(database)/documents/trips/$(tripId)).data.userId == request.auth.uid;
+    }
+    
+  }
+}
