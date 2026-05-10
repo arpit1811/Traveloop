@@ -152,7 +152,7 @@ export default function TripDetailPage({ params }: { params: Promise<{ id: strin
 
         <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
           <div className="flex border-b border-gray-200">
-            {["overview", "itinerarySections", "activities", "packing", "notes"].map((tab) => (
+            {["overview", "itinerarySections", "activities", "packing"].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
@@ -518,16 +518,6 @@ export default function TripDetailPage({ params }: { params: Promise<{ id: strin
               </div>
             )}
 
-            {activeTab === "notes" && (
-              <div className="text-center py-12">
-                <div className="text-6xl mb-4">📝</div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">Trip Notes</h3>
-                <p className="text-gray-500 mb-6">Add notes and important information</p>
-                <button className="px-6 py-3 bg-[#2E4057] text-white rounded-xl font-medium hover:bg-[#1D976C]">
-                  Add Notes
-                </button>
-              </div>
-            )}
           </div>
         </div>
       </div>
